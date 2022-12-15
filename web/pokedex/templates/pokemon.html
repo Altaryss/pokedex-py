@@ -1,0 +1,104 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>{{ res.name }} Informations</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	{% tailwind_css %}
+</head>
+
+<body class="bg-white py-24">
+	<div class="container mx-auto flex flex-wrap gap-6">
+		<div class="bg-white border border-gray-200 rounded-xl p-6 shadow-md w-full text-center">
+			<div class="flex items-center">
+				<img class="bg-black bg-opacity-5 rounded-xl w-24"
+					src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ res.id }}.png"
+					alt="">
+				<span class="font-bold capitalize ml-3 text-xl">{{ res.name }}</span>
+			</div>
+			<div class="grid grid-flow-col items-center gap-3 py-6">
+				<div class="text-left py-3 bg-gray-50 rounded-xl p-3 h-full">
+					<span>Types :</span>
+					<div class="flex flex-wrap gap-3 pt-1.5">
+						{% for type in res.types %}
+						<div class="bg-black bg-opacity-5 rounded-lg py-1 px-3 font-semibold">
+							<span>{{ type.type.name }}</span>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="text-left py-3 bg-gray-50 rounded-xl p-3 h-full">
+					<span>Statistiques :</span>
+					<div class="flex flex-wrap gap-3 pt-1.5">
+						{% for stat in res.stats %}
+						<div class="bg-black bg-opacity-5 rounded-lg py-1 px-3 font-semibold flex-col flex capitalize">
+							<span>{{ stat.stat.name }}</span>
+							<span class="text-gray-600 text-sm">{{ stat.base_stat }}</span>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="text-left py-3 bg-gray-50 rounded-xl p-3 h-full">
+					<span>Statistiques :</span>
+					<div class="flex flex-wrap gap-3 pt-1.5">
+						{% for ability in res.abilities %}
+						<div class="bg-black bg-opacity-5 rounded-lg py-1 px-3 font-semibold flex-col flex capitalize">
+							<span>{{ ability.ability.name }}</span>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="text-left py-3 bg-gray-50 rounded-xl p-3 h-full">
+					<span>Shiny :</span>
+					<div class="flex flex-wrap gap-3 pt-1.5">
+						<div
+							class="bg-black bg-opacity-5 rounded-lg py-1 px-3 font-semibold flex items-center capitalize">
+							<svg class="fill-current text-blue-400" style="width:24px;height:24px" viewBox="0 0 24 24">
+								<path fill="currentColor"
+									d="M9,9C10.29,9 11.5,9.41 12.47,10.11L17.58,5H13V3H21V11H19V6.41L13.89,11.5C14.59,12.5 15,13.7 15,15A6,6 0 0,1 9,21A6,6 0 0,1 3,15A6,6 0 0,1 9,9M9,11A4,4 0 0,0 5,15A4,4 0 0,0 9,19A4,4 0 0,0 13,15A4,4 0 0,0 9,11Z" />
+							</svg>
+							<div class="ml-2">
+								{% if res.sprites.front_shiny == null %}
+								<span>Non Shiny</span>
+								{% else %}
+								<img src="{{ res.sprites.front_shiny }}" alt="">
+								{% endif %}
+							</div>
+						</div>
+						<div
+							class="bg-black bg-opacity-5 rounded-lg py-1 px-3 font-semibold flex items-center capitalize">
+							<svg class="fill-current text-pink-400" style="width:24px;height:24px" viewBox="0 0 24 24">
+								<path fill="currentColor"
+									d="M12,4A6,6 0 0,1 18,10C18,12.97 15.84,15.44 13,15.92V18H15V20H13V22H11V20H9V18H11V15.92C8.16,15.44 6,12.97 6,10A6,6 0 0,1 12,4M12,6A4,4 0 0,0 8,10A4,4 0 0,0 12,14A4,4 0 0,0 16,10A4,4 0 0,0 12,6Z" />
+							</svg>
+							<div class="ml-2">
+								{% if res.sprites.front_shiny_female == null %}
+								<span>Non Shiny</span>
+								{% else %}
+								<img src="{{ res.sprites.front_shiny_female }}" alt="">
+								{% endif %}
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="pt-6">
+				<div class="flex items-center gap-3">
+					<a href="/" class="bg-gray-400 p-2 rounded-xl hover:bg-gray-500 tr-global">
+						<svg class="fill-current text-white" style="width:24px;height:24px" viewBox="0 0 24 24">
+							<path fill="currentColor"
+								d="M20,10V14H11L14.5,17.5L12.08,19.92L4.16,12L12.08,4.08L14.5,6.5L11,10H20Z" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

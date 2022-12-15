@@ -1,0 +1,30 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Pokedex.py</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-white py-24">
+		<div class="container mx-auto flex flex-wrap justify-center gap-6">
+			{% for i in res %}
+			<div class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg w-full max-w-xs text-center transform scale-100 hover:scale-105 tr-global">
+				<div class="flex items-center">
+					<img class="bg-black bg-opacity-5 rounded-xl w-24" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ i.id }}.png" alt="">
+					<span class="font-bold capitalize ml-3 text-xl">{{ i.data.name }}</span>
+				</div>
+				<div class="pt-6">
+					<div class="flex items-center gap-3 justify-end">
+						<a href="/pokemon/{{ i.id }}" class="bg-blue-500 text-white font-bold rounded-xl py-2 px-4 hover:bg-blue-600 tr-global">Voir plus</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</body>
+</html>

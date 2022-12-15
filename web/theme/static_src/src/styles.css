@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+    @apply scroll-smooth;
+  }
+  
+  .preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+  }
+  
+  input,
+  textarea,
+  button,
+  select,
+  label,
+  a,
+  span,
+  div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    @apply font-inter;
+  }
+  
+  input,
+  textarea {
+    outline: none;
+    appearance: none;
+  }
+  
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+  
+  button>* {
+    pointer-events: none;
+  }
+
+  .tr-global {
+    @apply transition-all ease-out;
+    transition-duration: 250ms;
+  }
